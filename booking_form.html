@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Your Flight</title>
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
+    <link type="text/css" rel="stylesheet" href="Booking.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div id="booking" class="section">
+        <div class="section-center">
+            <div class="container">
+                <div class="row">
+                    <div class="booking-form">
+                        <form>
+                            
+                            <div class="row">
+
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <span class="form-label">First Name</span>
+                                                    <input class="form-control" type="text" placeholder="First Name" id="first-name" onblur="validation();" required>
+                                                    <span id="first-name-span" style="color:red;"></span>
+                                                </div>
+                                                </div>
+        
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <span class="form-label">Last Name</span>
+                                                        <input class="form-control" type="text" placeholder="Last Name" id ="last-name" onblur="validation();" required>
+                                                        <span id="last-name-span" style="color:red;"></span>
+                                                    </div>
+                                                    </div>
+
+
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <div class="form-checkbox">
+                                                                <label for="roundtrip">
+                                                                    <input type="radio" id="roundtrip" name="metro-type">
+                                                                    <span></span>Male
+                                                                </label>
+                                                                <label for="one-way">
+                                                                    <input type="radio" id="one-way" name="metro-type">
+                                                                    <span></span>Female
+                                                                </label>
+                                                                <label for="multi-city">
+                                                                    <input type="radio" id="multi-city" name="metro-type">
+                                                                    <span></span>Other
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <span class="form-label">Metro from</span>
+                                        <select class="form-control" type="text" placeholder="Metro Station" required>
+                                            <option>select</option>
+                                            <option>Delhi Gate</option>
+											<option>Iffco Chowk</option>
+											<option>Dhansa Bus Stand†</option>
+											<option>Adarsh Nagar</option>
+											<option>Badarpur Border</option>
+											<option>Arjan Garh</option>
+											<option>Ashram</option>
+											<option>Central Secretariat</option>
+											<option>Chandni Chowk</option>
+											<option>Chawri Bazar</option>
+											<option>Chhatarpur</option>
+											
+                                            </select>
+                                            <span class="select-arrow"></span>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <span class="form-label">Metro to</span>
+                                        <select class="form-control" type="text" placeholder="Metro Station" required>
+                                            <option>select</option>
+                                            <option>iffco chock</option>
+											<option>Delhi Gate</option>
+											<option>Dhansa Bus Stand†</option>
+											<option>Adarsh Nagar</option>
+											<option>Badarpur Border</option>
+											<option>Arjan Garh</option>
+											<option>Ashram</option>
+											<option>Central Secretariat</option>
+											<option>Chandni Chowk</option>
+											<option>Chawri Bazar</option>
+											<option>Chhatarpur</option>
+											
+                                            </select>
+                                            <span class="select-arrow"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <span class="form-label">Date</span>
+                                        <input class="form-control" type="date"  id="resever-date">
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <span class="form-label">Adults (18+)</span>
+                                        <select class="form-control">
+											<option>1</option>
+											<option>2</option>
+											<option>3</option>
+											<option>4</option>
+											<option>5</option>
+										</select>
+                                        <span class="select-arrow"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <span class="form-label">Children (0-17)</span>
+                                        <select class="form-control">
+											<option>0</option>
+											<option>1</option>
+											<option>2</option>
+											<option>3</option>
+										</select>
+                                        <span class="select-arrow"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-btn">
+                                        <button type="submit" class="submit-btn">Book Ticket</button>
+                                        <div class="popup" id="popup">
+                                            <img src="tick.png">
+                                            <h2>Thank You!</h2>
+                                            <p>Your details has been successfully submitted. Thanks!</p>
+                                            <button type="button" onclick="closePopup()">OK</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+     let  popup = document.getElementById("popup");
+
+     function openPopup(){
+        // var Date=document.getElementById("resever-date").value;
+        // var value="";
+        //  if(Date.length>0){
+        //      alert
+        //     // return popup.classList.add("open-popup");
+        //     value="open-popup";
+        //  }
+        //  var value="open-popup";
+        // popup.classList.add(value);
+        popup.classList.add("open-popup");
+     }
+
+     function closePopup(){
+         popup.classList.remove("open-popup");
+     }
+// function validation(){
+
+//         var firstName=document.getElementById("first-name").value;
+//         if(firstName.length<4){
+//             document.getElementById("first-name-span").innerHTML="Please Enter Valid Name";
+//         }else{
+//             document.getElementById("first-name-span").innerHTML="";
+//         }
+//      }
+
+function validation(){
+            // alert("Hello");
+            var firstName=document.getElementById("first-name").value;
+            
+            // console.log(firstName.charCodeAt(0));
+
+            var status=false;
+            for(let i=0;i<firstName.length;i++){
+                let value=firstName.charCodeAt(i);
+                if(!((value>=65 && value<=90) || (value>=90 && value<=122))){
+                    status=true;
+                    break;
+                }           
+            }
+            if(status==true){
+                document.getElementById("first-name-span").innerHTML="Please Enter Valid Name";
+            }else{
+                document.getElementById("first-name-span").innerHTML="";
+            }
+        }
+    </script>
+
+
+
+    <!-- footer -->
+    <footer>
+        <div class="Good">
+            <div class="sec aboutus">
+                <h2>About Us</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad incidunt obcaecati laboriosam modi ratione sed iusto pariatur laborum ipsum, mollitia, tenetur repellendus dignissimos voluptatibus, adipisci cum minima officiis rem corporis.</p>\
+                <ul class="sci">
+                    <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                    <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                    <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                    <li><a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
+                </ul>
+            </div>
+            <div class="sec quickLinks">
+                <h2>Quick Links</h2>
+                <ul>
+                    <li><a href="">About Us</a></li>
+                    <li><a href="">FAQ</a></li>
+                    <li><a href="">Privacy Policy</a></li>
+                    <li><a href="">Help</a></li>
+                    <li><a href="">Terms & Conditions</a></li>
+                    <li><a href="">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="sec contact">
+                <h2>Contact Info</h2>
+                <ul class="info">
+                    <li>
+                        <span><i class="fa fa-map-marker" aria-hidden="true"></i></span>
+                        <span>Opposite Civil Hospital <br>,Anand Vihar,<br> Delhi</span>
+                    </li>
+                    <li>
+                        <span><i class="fa fa-phone-square" aria-hidden="true"></i></span>
+                        <p><a href="tel:0164-598-6375">+0164-598-6375</a><br>
+                            <a href="tel:12-74-361-789">+012-74-361-789</a><br>
+                            <a href="tel:102-707-19990">+0102-707-19990</a><br></p>
+                    </li>
+                    <li>
+                        <span><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                        <p><a href="mailto:delhimetro123@gmail.com">delhimetro123@gmail.com</a><br>
+                            <a href="mailto:metroservice123@gmail.com">metroservice123@gmail.com</a></p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    <div class="copyrightText">
+        <p>All Rights Reserved. Copyright © Delhi Metro Ltd.</p>
+    </div>
+
+</body>
+</html>
